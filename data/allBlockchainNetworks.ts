@@ -1,6 +1,6 @@
-import { BlockchainNetwork, BlockchainNetworkSchema, getBlockchainNetworkUid } from '../models/BlockchainNetwork'
 import { getInserter } from 'zenbox-util/zod'
 import { withIdFromName } from '../../generic/models/Name/withIdFromName'
+import { BlockchainNetwork, BlockchainNetworkSchema, getBlockchainNetworkUid } from '../models/BlockchainNetwork'
 
 export const allBlockchainNetworks: BlockchainNetwork[] = []
 
@@ -38,4 +38,22 @@ export const BscTestnet = addBlockchainNetwork(withIdFromName({
   name: 'Binance Smart Chain Testnet',
   symbol: 'tBNB',
   isMainnet: false,
+}))
+
+export const XcadMainnet = addBlockchainNetwork(withIdFromName({
+  name: 'XCAD Mainnet',
+  symbol: 'XCAD',
+  isMainnet: true,
+}))
+
+export const ChzMainnet = addBlockchainNetwork(withIdFromName({
+  name: 'Chiliz Mainnet',
+  symbol: 'CHZ',
+  isMainnet: true,
+}))
+
+export const ZilMainnet = addBlockchainNetwork(withIdFromName({
+  name: 'Ziliqa Mainnet',
+  symbol: 'ZIL',
+  isMainnet: true,
 }))

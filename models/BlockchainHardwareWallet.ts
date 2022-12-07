@@ -1,4 +1,4 @@
-import { isEqualBy } from 'zenbox-util/lodash'
+import { isEqualByD } from 'zenbox-util/lodash'
 import { getArraySchema } from 'zenbox-util/zod'
 import { z } from 'zod'
 import { NameSchema } from '../../generic/models/Name'
@@ -35,4 +35,4 @@ export function parseBlockchainHardwareWalletUid(walletUid: BlockchainHardwareWa
   return BlockchainHardwareWalletUidSchema.parse(walletUid)
 }
 
-export const isEqualBlockchainHardwareWallet = (a: BlockchainHardwareWallet) => (b: BlockchainHardwareWallet) => isEqualBy(a, b, parseBlockchainHardwareWalletUid)
+export const isEqualBlockchainHardwareWallet = (a: BlockchainHardwareWallet) => (b: BlockchainHardwareWallet) => isEqualByD(a, b, parseBlockchainHardwareWalletUid)

@@ -1,5 +1,5 @@
 import { trim } from 'lodash-es'
-import { getFinder, getInserter } from 'zenbox-util/zod'
+import { getFinder, getInserter } from 'libs/utils/zod'
 import { BlockchainExplorer, BlockchainExplorerSchema, getBlockchainExplorerUid } from '../models/BlockchainExplorer'
 import { BscMainnet, BscTestnet, EthMainnet, EthRopsten } from './allBlockchainNetworks'
 

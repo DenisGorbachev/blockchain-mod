@@ -1,4 +1,4 @@
-import { getInserter } from 'zenbox-util/zod'
+import { getInserter } from 'libs/utils/zod'
 import { withIdFromName } from '../../generic/models/Name/withIdFromName'
 import { BlockchainNetwork, BlockchainNetworkSchema, getBlockchainNetworkUid } from '../models/BlockchainNetwork'
 

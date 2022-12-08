@@ -1,4 +1,4 @@
-import { getFinder, getInserter, getName } from 'zenbox-util/zod'
+import { getFinder, getInserter, getName } from 'libs/utils/zod'
 import { BlockchainWalletBrand, BlockchainWalletBrandSchema, parseBlockchainWalletBrandUid } from '../models/BlockchainWalletBrand'
 
 export const allBlockchainWalletBrands: BlockchainWalletBrand[] = []

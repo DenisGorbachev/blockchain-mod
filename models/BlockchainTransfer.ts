@@ -1,6 +1,4 @@
 import { z } from 'zod'
-import { BlockchainNetworkSchema } from './BlockchainNetwork'
-import { AmountSchema } from '../../finance/models/Amount'
 import { TransferSchema } from '../../finance/models/Transfer'
 import { BlockchainTransactionSchema } from './BlockchainTransaction'
 

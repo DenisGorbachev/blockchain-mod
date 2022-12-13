@@ -1,6 +1,5 @@
-import { z } from 'zod'
-import { toUidFromSchema } from 'libs/utils/uid'
 import { getDuplicatesRefinement } from 'libs/utils/zod'
+import { z } from 'zod'
 import { TickerSchema } from '../../finance/models/Ticker'
 import { IdSchema } from '../../generic/models/Id'
 
@@ -31,5 +30,5 @@ export function validateBlockchainNetworks(networks: BlockchainNetwork[]): Block
 }
 
 export function getBlockchainNetworkUid(networkUid: BlockchainNetworkUid) {
-  return toUidFromSchema(networkUid, BlockchainNetworkUidSchema)
+  return BlockchainNetworkUidSchema.parse(networkUid)
 }

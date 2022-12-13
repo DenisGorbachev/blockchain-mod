@@ -1,10 +1,8 @@
-import { z } from 'zod'
-import { toUidFromSchema } from 'libs/utils/uid'
 import { getDuplicatesRefinement } from 'libs/utils/zod'
+import { z } from 'zod'
+import { NotesSchema } from '../../generic/models/Notes'
 import { UrlSchema } from '../../generic/models/Url'
 import { BlockchainNetworkSchema } from './BlockchainNetwork'
-import { NotesSchema } from '../../generic/models/Notes'
-import { Id } from '../../generic/models/Id'
 
 export const BlockchainBridgeRouteSchema = z.object({
   from: BlockchainNetworkSchema,
@@ -37,5 +35,5 @@ export function validateBlockchainBridges(bridges: BlockchainBridge[]): Blockcha
 }
 
 export function getBlockchainBridgeUid(bridgeUid: BlockchainBridgeUid) {
-  return toUidFromSchema(bridgeUid, BlockchainBridgeUidSchema)
+  return BlockchainBridgeUidSchema.parse(bridgeUid)
 }

@@ -1,9 +1,7 @@
-import { z } from 'zod'
-import { toUidFromSchema } from 'libs/utils/uid'
 import { getDuplicatesRefinement } from 'libs/utils/zod'
-import { BlockchainNetworkSchema, BlockchainNetworkUidSchema } from './BlockchainNetwork'
+import { z } from 'zod'
 import { UrlSchema } from '../../generic/models/Url'
-import { Id } from '../../generic/models/Id'
+import { BlockchainNetworkSchema, BlockchainNetworkUidSchema } from './BlockchainNetwork'
 
 export const BlockchainExplorerSchema = z.object({
   url: UrlSchema,
@@ -32,5 +30,5 @@ export function validateBlockchainExplorers(explorers: BlockchainExplorer[]): Bl
 }
 
 export function getBlockchainExplorerUid(explorerUid: BlockchainExplorerUid) {
-  return toUidFromSchema(explorerUid, BlockchainExplorerUidSchema)
+  return BlockchainExplorerUidSchema.parse(explorerUid)
 }

@@ -1,10 +1,9 @@
-import { z } from 'zod'
-import { toUidFromSchema } from 'libs/utils/uid'
 import { getDuplicatesRefinement } from 'libs/utils/zod'
-import { BlockchainNetworkSchema, BlockchainNetworkUidSchema } from './BlockchainNetwork'
-import { BlockchainTransactionHashSchema } from './BlockchainTransactionHash'
+import { z } from 'zod'
 import { AmountSchema } from '../../finance/models/Amount'
 import { BlockchainAddressSchema } from './BlockchainAddress'
+import { BlockchainNetworkSchema, BlockchainNetworkUidSchema } from './BlockchainNetwork'
+import { BlockchainTransactionHashSchema } from './BlockchainTransactionHash'
 
 export const BlockchainTransactionSchema = z.object({
   network: BlockchainNetworkSchema,
@@ -35,5 +34,5 @@ export function validateBlockchainTransactions(transactions: BlockchainTransacti
 }
 
 export function getBlockchainTransactionUid(transactionUid: BlockchainTransactionUid) {
-  return toUidFromSchema(transactionUid, BlockchainTransactionUidSchema)
+  return BlockchainTransactionUidSchema.parse(transactionUid)
 }

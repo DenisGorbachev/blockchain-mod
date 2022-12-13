@@ -1,6 +1,4 @@
 import { z } from 'zod'
-import { BlockchainNetworkSchema } from './BlockchainNetwork'
-import { BlockchainAddressSchema } from './BlockchainAddress'
 import { BlockchainContractSchema } from './BlockchainContract'
 
 export const BlockchainContractPageSchema = z.object({

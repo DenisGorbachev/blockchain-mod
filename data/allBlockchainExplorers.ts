@@ -1,7 +1,7 @@
 import { getFinder, getInserter } from 'libs/utils/zod'
 import { trim } from 'lodash-es'
 import { BlockchainExplorer, BlockchainExplorerSchema, getBlockchainExplorerUid } from '../models/BlockchainExplorer'
-import { BscMainnet, BscTestnet, EthMainnet, EthRopsten } from './allBlockchainNetworks'
+import { BscMainnet, BscTestnet, EthGoerli, EthMainnet, EthRopsten } from './allBlockchainNetworks'
 
 export const allBlockchainExplorers: BlockchainExplorer[] = []
 
@@ -26,6 +26,11 @@ export const EtherscanMainnet = addBlockchainExplorer(withEtherscanStyleUrlPatte
 export const EtherscanRopsten = addBlockchainExplorer(withEtherscanStyleUrlPatterns({
   url: 'https://ropsten.etherscan.io/',
   network: EthRopsten,
+}))
+
+export const EtherscanGoerli = addBlockchainExplorer(withEtherscanStyleUrlPatterns({
+  url: 'https://goerli.etherscan.io/',
+  network: EthGoerli,
 }))
 
 export const BscscanMainnet = addBlockchainExplorer(withEtherscanStyleUrlPatterns({

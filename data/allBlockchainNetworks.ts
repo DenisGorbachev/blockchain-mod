@@ -6,10 +6,6 @@ export const allBlockchainNetworks: BlockchainNetwork[] = []
 
 export const addBlockchainNetwork = getInserter('BlockchainNetwork', BlockchainNetworkSchema, getBlockchainNetworkUid, allBlockchainNetworks)
 
-export function isEqualBlockchainNetwork(a: BlockchainNetwork, b: BlockchainNetwork) {
-  return getBlockchainNetworkUid(a) === getBlockchainNetworkUid(b)
-}
-
 export const BtcMainnet = addBlockchainNetwork(withIdFromName({
   name: 'Bitcoin Mainnet',
   symbol: 'BTC',

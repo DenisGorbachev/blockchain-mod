@@ -2,6 +2,7 @@ import { getDuplicatesRefinement } from 'libs/utils/zod'
 import { z } from 'zod'
 import { TickerSchema } from '../../finance/models/Ticker'
 import { IdSchema } from '../../generic/models/Id'
+import { isEqualByDC } from '../../utils/lodash'
 
 export const BlockchainNetworkSchema = z.object({
   id: IdSchema,
@@ -32,3 +33,5 @@ export function validateBlockchainNetworks(networks: BlockchainNetwork[]): Block
 export function getBlockchainNetworkUid(networkUid: BlockchainNetworkUid) {
   return BlockchainNetworkUidSchema.parse(networkUid)
 }
+
+export const isEqualBlockchainNetwork = isEqualByDC(getBlockchainNetworkUid)

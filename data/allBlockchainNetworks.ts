@@ -28,6 +28,12 @@ export const EthRopsten = addBlockchainNetwork(withIdFromName({
   isMainnet: false,
 }))
 
+export const EthGoerli = addBlockchainNetwork(withIdFromName({
+  name: 'Ethereum Goerli',
+  symbol: 'gETH',
+  isMainnet: false,
+}))
+
 export const BscMainnet = addBlockchainNetwork(withIdFromName({
   name: 'Binance Smart Chain Mainnet',
   symbol: 'BNB',

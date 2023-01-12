@@ -2,11 +2,13 @@ import { getDuplicatesRefinement } from 'libs/utils/zod'
 import { z } from 'zod'
 import { TickerSchema } from '../../finance/models/Ticker'
 import { IdSchema } from '../../generic/models/Id'
+import { NameSchema } from '../../generic/models/Name'
 import { isEqualByDC } from '../../utils/lodash'
 
 export const BlockchainNetworkSchema = z.object({
   id: IdSchema,
-  name: z.string().min(1),
+  family: NameSchema,
+  label: NameSchema,
   symbol: TickerSchema,
   isMainnet: z.boolean(),
 })

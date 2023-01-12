@@ -1,61 +1,75 @@
 import { getInserter } from 'libs/utils/zod'
-import { withIdFromName } from '../../generic/models/Name/withIdFromName'
+import { fromStringToId } from '../../generic/models/Id'
 import { BlockchainNetwork, BlockchainNetworkSchema, getBlockchainNetworkUid } from '../models/BlockchainNetwork'
 
 export const allBlockchainNetworks: BlockchainNetwork[] = []
 
 export const addBlockchainNetwork = getInserter('BlockchainNetwork', BlockchainNetworkSchema, getBlockchainNetworkUid, allBlockchainNetworks)
 
-export const BtcMainnet = addBlockchainNetwork(withIdFromName({
-  name: 'Bitcoin Mainnet',
+export const addBlockchainNetworkD = (network: Omit<BlockchainNetwork, 'id'>) => addBlockchainNetwork({
+  id: fromStringToId(`${network.family} ${network.label}`),
+  ...network,
+})
+
+export const BtcMainnet = addBlockchainNetworkD({
+  family: 'Bitcoin',
+  label: 'Mainnet',
   symbol: 'BTC',
   isMainnet: true,
-}))
+})
 
-export const EthMainnet = addBlockchainNetwork(withIdFromName({
-  name: 'Ethereum Mainnet',
+export const EthMainnet = addBlockchainNetworkD({
+  family: 'Ethereum',
+  label: 'Mainnet',
   symbol: 'BTC',
   isMainnet: true,
-}))
+})
 
-export const EthRopsten = addBlockchainNetwork(withIdFromName({
-  name: 'Ethereum Ropsten',
+export const EthRopsten = addBlockchainNetworkD({
+  family: 'Ethereum',
+  label: 'Ropsten',
   symbol: 'rETH',
   isMainnet: false,
-}))
+})
 
-export const EthGoerli = addBlockchainNetwork(withIdFromName({
-  name: 'Ethereum Goerli',
+export const EthGoerli = addBlockchainNetworkD({
+  family: 'Ethereum',
+  label: 'Goerli',
   symbol: 'gETH',
   isMainnet: false,
-}))
+})
 
-export const BscMainnet = addBlockchainNetwork(withIdFromName({
-  name: 'Binance Smart Chain Mainnet',
+export const BnbMainnet = addBlockchainNetworkD({
+  family: 'BNB Chain',
+  label: 'Mainnet',
   symbol: 'BNB',
   isMainnet: true,
-}))
+})
 
-export const BscTestnet = addBlockchainNetwork(withIdFromName({
-  name: 'Binance Smart Chain Testnet',
+export const BscTestnet = addBlockchainNetworkD({
+  family: 'BNB Chain',
+  label: 'Testnet',
   symbol: 'tBNB',
   isMainnet: false,
-}))
+})
 
-export const XcadMainnet = addBlockchainNetwork(withIdFromName({
-  name: 'XCAD Mainnet',
+export const XcadMainnet = addBlockchainNetworkD({
+  family: 'XCAD',
+  label: 'Mainnet',
   symbol: 'XCAD',
   isMainnet: true,
-}))
+})
 
-export const ChzMainnet = addBlockchainNetwork(withIdFromName({
-  name: 'Chiliz Mainnet',
+export const ChzMainnet = addBlockchainNetworkD({
+  family: 'Chiliz',
+  label: 'Mainnet',
   symbol: 'CHZ',
   isMainnet: true,
-}))
+})
 
-export const ZilMainnet = addBlockchainNetwork(withIdFromName({
-  name: 'Ziliqa Mainnet',
+export const ZilMainnet = addBlockchainNetworkD({
+  family: 'Ziliqa',
+  label: 'Mainnet',
   symbol: 'ZIL',
   isMainnet: true,
-}))
+})

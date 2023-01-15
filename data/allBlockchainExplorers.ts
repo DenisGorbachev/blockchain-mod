@@ -1,7 +1,7 @@
 import { getFinder, getInserter } from 'libs/utils/zod'
 import { trim } from 'lodash-es'
 import { BlockchainExplorer, BlockchainExplorerSchema, getBlockchainExplorerUid } from '../models/BlockchainExplorer'
-import { BnbMainnet, BscTestnet, EthGoerli, EthMainnet, EthRopsten } from './allBlockchainNetworks'
+import { BNBChainMainnet, BNBChainTestnet, EthGoerli, EthMainnet, EthRopsten } from './allBlockchainNetworks'
 
 export const allBlockchainExplorers: BlockchainExplorer[] = []
 
@@ -35,10 +35,10 @@ export const EtherscanGoerli = addBlockchainExplorer(withEtherscanStyleUrlPatter
 
 export const BscscanMainnet = addBlockchainExplorer(withEtherscanStyleUrlPatterns({
   url: 'https://bscscan.io/',
-  network: BnbMainnet,
+  network: BNBChainMainnet,
 }))
 
 export const BscscanTestnet = addBlockchainExplorer(withEtherscanStyleUrlPatterns({
   url: 'https://testnet.bscscan.com/',
-  network: BscTestnet,
+  network: BNBChainTestnet,
 }))

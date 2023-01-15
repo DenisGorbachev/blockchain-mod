@@ -11,6 +11,7 @@ export const BlockchainNetworkSchema = z.object({
   label: NameSchema,
   symbol: TickerSchema,
   isMainnet: z.boolean(),
+  isLocal: z.boolean(),
 })
 
 export const BlockchainNetworksSchema = z.array(BlockchainNetworkSchema)

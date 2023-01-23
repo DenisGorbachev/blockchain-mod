@@ -2,12 +2,16 @@ import { getFinder, getInserter } from 'libs/utils/zod'
 import { trim } from 'lodash-es'
 import { BlockchainExplorer, BlockchainExplorerSchema, getBlockchainExplorerUid } from '../models/BlockchainExplorer'
 import { BNBChainMainnet, BNBChainTestnet, EthGoerli, EthMainnet, EthRopsten } from './allBlockchainNetworks'
+import { BlockchainNetwork, isEqualBlockchainNetwork } from '../models/BlockchainNetwork'
+import { ensureFind } from '../../utils/ensure'
 
 export const allBlockchainExplorers: BlockchainExplorer[] = []
 
 export const addBlockchainExplorer = getInserter('BlockchainExplorer', BlockchainExplorerSchema, getBlockchainExplorerUid, allBlockchainExplorers)
 
 export const findBlockchainExplorer = getFinder(getBlockchainExplorerUid, allBlockchainExplorers)
+
+export const getBlockchainExplorerByNetwork = (network: BlockchainNetwork) => ensureFind(allBlockchainExplorers, e => isEqualBlockchainNetwork(e.network)(network))
 
 function withEtherscanStyleUrlPatterns(explorer: Omit<BlockchainExplorer, 'addressExplorerUrlPattern' | 'transactionHashExplorerUrlPattern'>) {
   const explorerUrlTrimmed = trim(explorer.url, '/')

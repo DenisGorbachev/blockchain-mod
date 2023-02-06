@@ -1,7 +1,7 @@
 import { getFinder, getInserter } from 'libs/utils/zod'
 import { trim } from 'lodash-es'
 import { BlockchainExplorer, BlockchainExplorerSchema, getBlockchainExplorerUid } from '../models/BlockchainExplorer'
-import { BNBChainMainnet, BNBChainTestnet, EthGoerli, EthMainnet, EthRopsten } from './allBlockchainNetworks'
+import { BNBChainMainnet, BNBChainTestnet, CantoMainnet, CantoTestnet, EthGoerli, EthMainnet, EthRopsten } from './allBlockchainNetworks'
 import { BlockchainNetwork, isEqualBlockchainNetwork } from '../models/BlockchainNetwork'
 import { ensureFind } from '../../utils/ensure'
 
@@ -45,4 +45,14 @@ export const BscscanMainnet = addBlockchainExplorer(withEtherscanStyleUrlPattern
 export const BscscanTestnet = addBlockchainExplorer(withEtherscanStyleUrlPatterns({
   url: 'https://testnet.bscscan.com/',
   network: BNBChainTestnet,
+}))
+
+export const CantoExplorerMainnet = addBlockchainExplorer(withEtherscanStyleUrlPatterns({
+  url: 'https://evm.explorer.canto.io/',
+  network: CantoMainnet,
+}))
+
+export const CantoExplorerTestnet = addBlockchainExplorer(withEtherscanStyleUrlPatterns({
+  url: 'https://evm.explorer.canto-testnet.com/',
+  network: CantoTestnet,
 }))

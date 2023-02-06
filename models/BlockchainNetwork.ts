@@ -10,6 +10,7 @@ export const BlockchainNetworkSchema = z.object({
   family: NameSchema,
   label: NameSchema,
   symbol: TickerSchema,
+  decimals: z.number().positive(),
   isMainnet: z.boolean(),
   isLocal: z.boolean(),
 })

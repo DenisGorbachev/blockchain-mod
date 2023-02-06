@@ -68,6 +68,20 @@ export const BNBChainTestnet = addBlockchainNetworkD({
   isMainnet: false,
 })
 
+export const CantoMainnet = addBlockchainNetworkD({
+  family: 'Canto',
+  label: 'Mainnet',
+  symbol: 'CANTO',
+  isMainnet: true,
+})
+
+export const CantoTestnet = addBlockchainNetworkD({
+  family: 'Canto',
+  label: 'Testnet',
+  symbol: 'tCANTO',
+  isMainnet: false,
+})
+
 export const XcadMainnet = addBlockchainNetworkD({
   family: 'XCAD',
   label: 'Mainnet',

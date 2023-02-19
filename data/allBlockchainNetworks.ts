@@ -1,7 +1,8 @@
 import { getInserter } from 'libs/utils/zod'
 import { fromStringToId } from '../../generic/models/Id'
-import { BlockchainNetwork, BlockchainNetworkSchema, getBlockchainNetworkUid } from '../models/BlockchainNetwork'
+import { ensureFind } from '../../utils/ensure'
 import { todo } from '../../utils/todo'
+import { BlockchainNetwork, BlockchainNetworkSchema, getBlockchainNetworkUid } from '../models/BlockchainNetwork'
 
 export const allBlockchainNetworks: BlockchainNetwork[] = []
 
@@ -12,6 +13,8 @@ export const addBlockchainNetworkD = (network: Omit<BlockchainNetwork, 'id' | 'i
   isLocal: false,
   ...network,
 })
+
+export const getParent = (network: BlockchainNetwork) => ensureFind(allBlockchainNetworks, parent => network.parentId === parent.id)
 
 export const BtcMainnet = addBlockchainNetworkD({
   family: 'Bitcoin',
@@ -114,5 +117,14 @@ export const ZilMainnet = addBlockchainNetworkD({
   label: 'Mainnet',
   symbol: 'ZIL',
   decimals: todo(18),
+  isMainnet: true,
+})
+
+export const ArbitrumMainnet = addBlockchainNetworkD({
+  family: 'Arbitrum',
+  label: 'Mainnet',
+  parentId: EthMainnet.id,
+  symbol: 'ETH',
+  decimals: 18,
   isMainnet: true,
 })

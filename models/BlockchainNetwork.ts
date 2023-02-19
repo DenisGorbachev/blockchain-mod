@@ -7,6 +7,7 @@ import { isEqualByDC } from '../../utils/lodash'
 
 export const BlockchainNetworkSchema = z.object({
   id: IdSchema,
+  parentId: IdSchema.optional(),
   family: NameSchema,
   label: NameSchema,
   symbol: TickerSchema,

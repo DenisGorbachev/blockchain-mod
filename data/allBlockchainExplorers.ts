@@ -1,9 +1,9 @@
 import { getFinder, getInserter } from 'libs/utils/zod'
 import { trim } from 'lodash-es'
-import { BlockchainExplorer, BlockchainExplorerSchema, getBlockchainExplorerUid } from '../models/BlockchainExplorer'
-import { BNBChainMainnet, BNBChainTestnet, CantoMainnet, CantoTestnet, EthGoerli, EthMainnet, EthRopsten } from './allBlockchainNetworks'
-import { BlockchainNetwork, isEqualBlockchainNetwork } from '../models/BlockchainNetwork'
 import { ensureFind } from '../../utils/ensure'
+import { BlockchainExplorer, BlockchainExplorerSchema, getBlockchainExplorerUid } from '../models/BlockchainExplorer'
+import { BlockchainNetwork, isEqualBlockchainNetwork } from '../models/BlockchainNetwork'
+import { BNBChainMainnet, BNBChainTestnet, CantoMainnet, CantoTestnet, EthereumGoerli, EthereumMainnet, EthereumRopsten } from './allBlockchainNetworks'
 
 export const allBlockchainExplorers: BlockchainExplorer[] = []
 
@@ -24,21 +24,21 @@ function withEtherscanStyleUrlPatterns(explorer: Omit<BlockchainExplorer, 'addre
 
 export const EtherscanMainnet = addBlockchainExplorer(withEtherscanStyleUrlPatterns({
   url: 'https://etherscan.io/',
-  network: EthMainnet,
+  network: EthereumMainnet,
 }))
 
 export const EtherscanRopsten = addBlockchainExplorer(withEtherscanStyleUrlPatterns({
   url: 'https://ropsten.etherscan.io/',
-  network: EthRopsten,
+  network: EthereumRopsten,
 }))
 
 export const EtherscanGoerli = addBlockchainExplorer(withEtherscanStyleUrlPatterns({
   url: 'https://goerli.etherscan.io/',
-  network: EthGoerli,
+  network: EthereumGoerli,
 }))
 
 export const BscscanMainnet = addBlockchainExplorer(withEtherscanStyleUrlPatterns({
-  url: 'https://bscscan.io/',
+  url: 'https://bscscan.com/',
   network: BNBChainMainnet,
 }))
 

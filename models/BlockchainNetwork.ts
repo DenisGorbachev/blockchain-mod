@@ -17,7 +17,7 @@ export const BlockchainNetworkSchema = z.object({
 })
 
 export const BlockchainNetworksSchema = z.array(BlockchainNetworkSchema)
-  .superRefine(getDuplicatesRefinement('BlockchainNetwork', getBlockchainNetworkUid))
+  .superRefine(getDuplicatesRefinement('BlockchainNetwork', parseBlockchainNetworkUid))
 
 export const BlockchainNetworkUidSchema = BlockchainNetworkSchema.pick({
   id: true,
@@ -35,8 +35,8 @@ export function validateBlockchainNetworks(networks: BlockchainNetwork[]): Block
   return BlockchainNetworksSchema.parse(networks)
 }
 
-export function getBlockchainNetworkUid(networkUid: BlockchainNetworkUid) {
+export function parseBlockchainNetworkUid(networkUid: BlockchainNetworkUid) {
   return BlockchainNetworkUidSchema.parse(networkUid)
 }
 
-export const isEqualBlockchainNetwork = isEqualByDC(getBlockchainNetworkUid)
+export const isEqualBlockchainNetwork = isEqualByDC(parseBlockchainNetworkUid)

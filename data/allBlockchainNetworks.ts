@@ -2,11 +2,11 @@ import { getInserter } from 'libs/utils/zod'
 import { fromStringToId } from '../../generic/models/Id'
 import { ensureFind } from '../../utils/ensure'
 import { todo } from '../../utils/todo'
-import { BlockchainNetwork, BlockchainNetworkSchema, getBlockchainNetworkUid } from '../models/BlockchainNetwork'
+import { BlockchainNetwork, BlockchainNetworkSchema, parseBlockchainNetworkUid } from '../models/BlockchainNetwork'
 
 export const allBlockchainNetworks: BlockchainNetwork[] = []
 
-export const addBlockchainNetwork = getInserter('BlockchainNetwork', BlockchainNetworkSchema, getBlockchainNetworkUid, allBlockchainNetworks)
+export const addBlockchainNetwork = getInserter('BlockchainNetwork', BlockchainNetworkSchema, parseBlockchainNetworkUid, allBlockchainNetworks)
 
 export const addBlockchainNetworkD = (network: Omit<BlockchainNetwork, 'id' | 'isLocal'>) => addBlockchainNetwork({
   id: fromStringToId(`${network.family} ${network.label}`),
@@ -16,7 +16,7 @@ export const addBlockchainNetworkD = (network: Omit<BlockchainNetwork, 'id' | 'i
 
 export const getParent = (network: BlockchainNetwork) => ensureFind(allBlockchainNetworks, parent => network.parentId === parent.id)
 
-export const BtcMainnet = addBlockchainNetworkD({
+export const BitcoinMainnet = addBlockchainNetworkD({
   family: 'Bitcoin',
   label: 'Mainnet',
   symbol: 'BTC',
@@ -24,7 +24,7 @@ export const BtcMainnet = addBlockchainNetworkD({
   isMainnet: true,
 })
 
-export const EthMainnet = addBlockchainNetworkD({
+export const EthereumMainnet = addBlockchainNetworkD({
   family: 'Ethereum',
   label: 'Mainnet',
   symbol: 'ETH',
@@ -32,7 +32,7 @@ export const EthMainnet = addBlockchainNetworkD({
   isMainnet: true,
 })
 
-export const EthRopsten = addBlockchainNetworkD({
+export const EthereumRopsten = addBlockchainNetworkD({
   family: 'Ethereum',
   label: 'Ropsten',
   symbol: 'rETH',
@@ -40,7 +40,7 @@ export const EthRopsten = addBlockchainNetworkD({
   isMainnet: false,
 })
 
-export const EthRinkeby = addBlockchainNetworkD({
+export const EthereumRinkeby = addBlockchainNetworkD({
   family: 'Ethereum',
   label: 'Rinkeby',
   symbol: 'rETH',
@@ -48,7 +48,7 @@ export const EthRinkeby = addBlockchainNetworkD({
   isMainnet: false,
 })
 
-export const EthGoerli = addBlockchainNetworkD({
+export const EthereumGoerli = addBlockchainNetworkD({
   family: 'Ethereum',
   label: 'Goerli',
   symbol: 'gETH',
@@ -56,7 +56,7 @@ export const EthGoerli = addBlockchainNetworkD({
   isMainnet: false,
 })
 
-export const EthHardhat = addBlockchainNetworkD({
+export const EthereumHardhat = addBlockchainNetworkD({
   family: 'Ethereum',
   label: 'Hardhat',
   symbol: 'ETH',
@@ -104,7 +104,7 @@ export const XcadMainnet = addBlockchainNetworkD({
   isMainnet: true,
 })
 
-export const ChzMainnet = addBlockchainNetworkD({
+export const ChilizMainnet = addBlockchainNetworkD({
   family: 'Chiliz',
   label: 'Mainnet',
   symbol: 'CHZ',
@@ -112,7 +112,7 @@ export const ChzMainnet = addBlockchainNetworkD({
   isMainnet: true,
 })
 
-export const ZilMainnet = addBlockchainNetworkD({
+export const ZiliqaMainnet = addBlockchainNetworkD({
   family: 'Ziliqa',
   label: 'Mainnet',
   symbol: 'ZIL',
@@ -123,7 +123,7 @@ export const ZilMainnet = addBlockchainNetworkD({
 export const ArbitrumMainnet = addBlockchainNetworkD({
   family: 'Arbitrum',
   label: 'Mainnet',
-  parentId: EthMainnet.id,
+  parentId: EthereumMainnet.id,
   symbol: 'ETH',
   decimals: 18,
   isMainnet: true,
